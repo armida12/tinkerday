@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Paths</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .career-options {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .career-options li {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">Career Paths</h1>
+    <p id="description">Loading career options...</p>
+    <ul class="career-options" id="careerList"></ul>
+  </div>
+
+  <script>
+    // Predefined career options based on interests
+    const careerOptions = {
+      technology: ['Software Developer', 'Data Scientist', 'Cybersecurity Analyst', 'IT Manager', 'AI Specialist'],
+      art: ['Graphic Designer', 'Illustrator', 'Art Director', 'Animator', 'Creative Director'],
+      sports: ['Athletic Trainer', 'Coach', 'Sports Psychologist', 'Physical Therapist', 'Sports Commentator'],
+      science: ['Research Scientist', 'Lab Technician', 'Biotechnologist', 'Environmental Scientist', 'Astrophysicist'],
+      business: ['Entrepreneur', 'Marketing Manager', 'Financial Analyst', 'HR Specialist', 'Business Consultant'],
+      music: ['Musician', 'Sound Engineer', 'Music Teacher', 'Composer', 'Music Producer'],
+      writing: ['Journalist', 'Content Writer', 'Editor', 'Author', 'Screenwriter'],
+      healthcare: ['Doctor', 'Nurse', 'Pharmacist', 'Medical Researcher', 'Therapist'],
+      education: ['Teacher', 'Academic Counselor', 'Curriculum Developer', 'Education Administrator', 'Instructional Designer'],
+      travel: ['Travel Blogger', 'Tour Guide', 'Travel Agent', 'Flight Attendant', 'Hotel Manager'],
+      food: ['Chef', 'Food Critic', 'Nutritionist', 'Food Scientist', 'Pastry Chef'],
+      environment: ['Ecologist', 'Conservation Scientist', 'Renewable Energy Specialist', 'Environmental Policy Analyst', 'Wildlife Biologist'],
+      gaming: ['Game Developer', 'Game Tester', 'Esports Player', 'Game Designer', 'Game Streamer'],
+      fashion: ['Fashion Designer', 'Stylist', 'Fashion Buyer', 'Textile Engineer', 'Model'],
+      finance: ['Accountant', 'Investment Banker', 'Tax Consultant', 'Financial Planner', 'Stock Broker'],
+      engineering: ['Mechanical Engineer', 'Civil Engineer', 'Electrical Engineer', 'Aerospace Engineer', 'Robotics Engineer'],
+      psychology: ['Clinical Psychologist', 'Counselor', 'Industrial Psychologist', 'Forensic Psychologist', 'Behavioral Analyst'],
+      law: ['Lawyer', 'Legal Consultant', 'Paralegal', 'Judge', 'Corporate Lawyer'],
+      social_work: ['Social Worker', 'Community Outreach Coordinator', 'Mental Health Advocate', 'Nonprofit Manager', 'Case Worker'],
+      media: ['Journalist', 'TV Producer', 'News Anchor', 'Content Creator', 'Public Relations Specialist']
+    };
+
+    // Extract 'interest' from the URL
+    const params = new URLSearchParams(window.location.search);
+    const interest = params.get('interest');
+
+    const title = document.getElementById('title');
+    const description = document.getElementById('description');
+    const careerList = document.getElementById('careerList');
+
+    if (interest && careerOptions[interest]) {
+      title.innerText = `Career Paths for ${interest.replace('_', ' ')}`;
+      description.innerText = 'Here are some career options based on your interest:';
+      careerOptions[interest].forEach(career => {
+        const li = document.createElement('li');
+        li.innerText = career;
+        careerList.appendChild(li);
+      });
+    } else {
+      title.innerText = 'Invalid Interest';
+      description.innerText = 'Sorry, no careers found for the selected interest.';
+    }
+  </script>
+</body>
+</html>
